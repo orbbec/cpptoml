@@ -27,6 +27,37 @@
 #include <map>
 #include <vector>
 
+#ifdef __ANDROID__
+
+namespace std {
+
+    template <typename T>
+    std::string to_string(T value)
+    {
+        std::ostringstream os ;
+        os << value ;
+        return os.str() ;
+    }
+
+    long long stoll(std::string s)
+    {
+        std::stringstream ss(s);
+        long long value;
+        ss >> value;
+        return value;
+    }
+
+    long double stold(std::string s)
+    {
+        std::stringstream ss(s);
+        long double value;
+        ss >> value;
+        return value;
+    }
+}
+
+#endif
+
 namespace cpptoml
 {
 
